@@ -11,19 +11,19 @@
       <li
         @click="select('A')"
         :class="['mdui-list-item mdui-ripple',{'mdui-list-item-active':CurTopic.Tm_Selec=='A'}]"
-      >A、{{ CurTopic.Tm_Data.CurA }}</li>
+      >{{ CurTopic.Tm_Data.CurA }}</li>
       <li
         @click="select('B')"
         :class="['mdui-list-item mdui-ripple',{'mdui-list-item-active':CurTopic.Tm_Selec=='B'}]"
-      >B、{{ CurTopic.Tm_Data.CurB }}</li>
+      >{{ CurTopic.Tm_Data.CurB }}</li>
       <li
         @click="select('C')"
         :class="['mdui-list-item mdui-ripple',{'mdui-list-item-active':CurTopic.Tm_Selec=='C'}]"
-      >C、{{ CurTopic.Tm_Data.CurC }}</li>
+      >{{ CurTopic.Tm_Data.CurC }}</li>
       <li
         @click="select('D')"
         :class="['mdui-list-item mdui-ripple',{'mdui-list-item-active':CurTopic.Tm_Selec=='D'}]"
-      >D、{{ CurTopic.Tm_Data.CurD }}</li>
+      >{{ CurTopic.Tm_Data.CurD }}</li>
     </ul>
     <div class="mdui-row-xs-2">
       <div class="mdui-col">
@@ -41,6 +41,11 @@
         >下一题</button>
       </div>
     </div>
+    <button
+      @click="getTkData(10)"
+      style="font-size: 20px;"
+      class="mdui-m-t-2 mdui-btn mdui-btn-block mdui-btn-raised mdui-color-theme-accent mdui-ripple"
+    >设 置 题 目</button>
   </div>
 </template>
 <script>
@@ -94,7 +99,6 @@ export default {
         this.Current--;
         TopicPage.Current = this.CurTopic;
       } else {
-        
       }
     },
     select: function(value) {
@@ -123,6 +127,7 @@ export default {
               "TopicPage",
               JSON.stringify({ Total: res.body.Count, Current: 1 })
             );
+            
             TkData = JSON.parse(getCookie("TKDatalist"));
             TopicPage = JSON.parse(getCookie("TopicPage"));
             this.CurTopic = TkData[TopicPage.Current - 1];
@@ -143,7 +148,7 @@ export default {
       this.Total = TopicPage.Total;
       this.Current = TopicPage.Current;
     } else {
-      this.getTkData(10);
+      this.getTkData(100);
     }
   }
 };

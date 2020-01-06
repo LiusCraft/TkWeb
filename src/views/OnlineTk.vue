@@ -1,7 +1,6 @@
 <template>
     <div>
         <Exam/>
-        <Loading/>
     </div>
 </template>
 <script>
@@ -14,8 +13,7 @@ export default {
     };
   },
   components: {
-    Exam,
-    Loading
+    Exam
   }
 };
 </script>
